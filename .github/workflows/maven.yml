@@ -1,0 +1,50 @@
+name: Maven CI for Spring Boot
+run-name: ${{ github.actor }} triggered a Maven build with GitHub Actions 🚀
+on:
+  push:
+    branches: [ Part_A, Part_B ]
+  pull_request:
+    branches: [ Part_A, Part_B ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show event information
+        run: echo "🎉 Workflow triggered by ${{ github.event_name }}"
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Show branch
+        run: echo "Running CI for branch ${{ github.ref_name }}"
+
+      - name: Show repository info
+        run: |
+          echo "🔎 Repository: ${{ github.repository }}"
+          echo "🌿 Branch: ${{ github.ref }}"
+          echo "🖥️ Runner OS: ${{ runner.os }}"
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Verify Maven installation
+        run: mvn -version
+
+      - name: List project files
+        run: ls -R
+
+      - name: Build and run tests with Maven
+        run: mvn -B clean test
+
+      - name: Build successful
+        if: success()
+        run: echo "✅ All tests passed successfully!"
+
+      - name: Build failed
+        if: failure()
+        run: echo "❌ Some tests failed. Please check the logs."
