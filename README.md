@@ -38,7 +38,7 @@ A Learning Management System (LMS) backend API built with Spring Boot and a comp
 
 ## Project Structure
 ```
-lms-application/
+LMS_Service_Part_A/
 ├── pom.xml
 └── src/
     ├── main/
