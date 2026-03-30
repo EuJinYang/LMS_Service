@@ -79,5 +79,50 @@ Additionally, the Swing client resides in a separate module or can be placed in 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/lms-application.git
-   cd lms-application
+   git clone https://github.com/EuJinYang/LMS_Service.git
+   cd LMS_Service
+
+2. Build and run the Spring Boot application:
+   ```bash
+   mvn spring-boot:run
+   ```
+   The API will be accessible at http://localhost:8080 by default.
+
+### Running the Desktop Client (Part B)
+1. Ensure the API is running.
+2. Navigate to the Swing client directory and run:
+   ```bash
+   # If packaged as a jar
+   java -jar lms-swing-client.jar
+   ```
+3. Enter the API Base URL (e.g., http://localhost:8080/api) and click "Load Active Students".
+
+## Testing
+
+### Automated Testing
+
+The project uses a multi-level testing strategy following the V-Model, covering Unit, Integration, and System testing.
+
+- **Unit Tests**
+  Located in `LmsServiceTest` and `LmsControllerTest`. These use Mockito to isolate business logic.
+  
+- **Integration Tests**
+  Located in `LmsApplicationTests`. These use a real in-memory repository to verify layer interactions.
+
+To run all tests:
+```bash
+mvn clean test
+```
+
+### Continuous Integration
+
+This project is configured with GitHub Actions. Every push to the main branch triggers an automated workflow that:
+
+1. Sets up the Java environment.
+2. Runs `mvn clean test` to execute all 27 unit and integration tests.
+3. Verifies that both the Backend and Swing client compile correctly.
+
+## Appendix
+
+- GitHub Repository: https://github.com/EuJinYang/LMS_Service.git
+- Demo Video: https://youtu.be/ytrguPLtIv4
