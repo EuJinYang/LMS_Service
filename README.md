@@ -103,10 +103,10 @@ Additionally, the Swing client resides in a separate module or can be placed in 
 
 The project uses a multi-level testing strategy following the V-Model, covering Unit, Integration, and System testing.
 
-- **Unit Tests**
+- **Unit Tests**  
   Located in `LmsServiceTest` and `LmsControllerTest`. These use Mockito to isolate business logic.
   
-- **Integration Tests**
+- **Integration Tests**  
   Located in `LmsApplicationTests`. These use a real in-memory repository to verify layer interactions.
 
 To run all tests:
